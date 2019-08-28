@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Unmerbaya Alumni",
+  "short_name": "Unmerbaya Alumni",
+  "version": "io.cordova.hellocordova",
+  "description": "Apps For Unmer Registration",
+  "author": "Apache Cordova Team",
+  "icons": [],
+  "start_url": "index.html"
+}

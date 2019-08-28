@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.helloCordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Unmerbaya Alumni</name>
+    <description>
+        Apps For Unmer Registration
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="*" />
+    <access origin="*" />
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="/platforms/android/icon/unmerbaya.png" />
+    <icon density="mdpi" src="/platforms/android/icon/unmerbaya.png" />
+    <icon density="hdpi" src="/platforms/android/icon/unmerbaya.png" />
+    <icon density="xhdpi" src="/platforms/android/icon/unmerbaya.png" />
+    <icon density="xxhdpi" src="/platforms/android/icon/unmerbaya.png" />
+    <icon density="xxxhdpi" src="/platforms/android/icon/unmerbaya.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+</widget>

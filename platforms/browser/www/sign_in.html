@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Universitas Merdeka Surabaya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-grid.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.wmuSlider.js"></script>
+  <script src="js/jquery-2.2.3.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/aos.js"></script>
+</head>
+<style>
+  body{
+    font-family: "Century Gothic";
+    background-image: url(images/BG_login.jpg);
+    height: auto;
+    background-size: 120% 120%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>
+<body>
+<div class="container-login">
+  <div class="text-center">
+    <img width="80%" src="images/logo_unmer1.png" alt="">
+  </div>
+
+    <div class="col-12 text-center">
+      <label class="font-weight-normal text-16 text-white text-center">Universitas Merdeka Surabaya</label>
+    </div>
+
+    <div class="col-12 mt-4 text-center">
+      <form class="px-5" id="login-form">
+        <div class="row form-group">
+          <div class="col-12">
+            <div class="form-input-login">
+            <div class="row">
+              <div class="col-2 text-center">
+                <div class="bulat-orange ml-2">
+                    <img src="images/icon/user_login.png" class="login-icon">
+                </div>
+              </div>
+              <div class="col-10">
+                <input name="login-username" type="text" id="uname" class="form-control login font-weight-light" placeholder="Username" required>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-12">
+          <div class="form-input-login">
+            <div class="row">
+              <div class="col-2 text-center">
+                <div class="bulat-orange ml-2">
+                    <img src="images/icon/password.png" class="login-icon">
+                </div>
+              </div>
+              <div class="col-10">
+                <input name="login-password" type="password" id="password" class="form-control login font-weight-light full-width" placeholder="Password" required>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-12">
+              <button type="submit" class="btn btn-warning btn-login font-weight-bold text-16 mb-0 text-white" width="100%">LOGIN
+              </button>
+          </div>
+        </div>
+      </form>
+
+      <p class="font-weight-light text-12 text-center text-white"> Apakah anda belum punya akun? <a class="font-weight-bold text-warning" href="sign_up.html">Buat akun</a></p>
+
+      <div class="version-bottom">
+        <p class="font-weight-light text-14 text-center text-white">Teras Kampus © 2019<br> V.1.0</p>
+      </div>
+    </div>
+
+    <!-- popup failed -->
+    <div class="modal fade modal-notif" id="modal-failed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog px-3">
+          <div class="modal-red px-2 py-2 text-center">
+              <p class="text-18 text-white font-weight-bold">Login Failed!</p>
+              <p class="text-16 text-white">Please Check your username and password! </p>
+          </div>
+          </div>
+      </div>
+    </div>
+
+</div>
+
+<script>
+
+  $('#login-form').on('submit', function(){
+    $.ajax({
+      type: "post",
+      url: "http://astrodevel.com/unmerbaya/unmer/login",
+      cache: false,
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(data){
+        if(data.auth_message == 'success'){
+          localStorage.setItem('id',data.login_data.id);
+          localStorage.setItem('nim',data.login_data.nim);
+          localStorage.setItem('nama',data.login_data.nama);
+          localStorage.setItem('fakultas',data.login_data.fakultas);
+          localStorage.setItem('jurusan',data.login_data.jurusan);
+          localStorage.setItem('angkatan',data.login_data.angkatan);
+          localStorage.setItem('Work_At',data.login_data.work_at);
+          localStorage.setItem('photo',data.login_data.photo);
+          window.location = 'welcome.html';
+        }
+        else{
+          $('#modal-failed').modal('show');
+          setTimeout(function(){
+            $('#modal-failed').modal('hide');
+          },2000); 
+        }
+      },
+      error: function() {
+        
+      }
+    });
+    return false;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="css/bootstrap-4.3.1.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/font-awesome-4.7.0.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <script src="js/jquery-2.2.3.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <style>
+    body{
+      font-family: "Century Gothic";
+      background-image: url(images/welcome-01.png);
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row mt-2">
+      <div class="col-6 mt-3">
+        <img width="80%" src="images/logo_unmer1.png">
+      </div>
+      <div class="col-6 mt-2 text-right">
+        <img width="45%" src="images/logounmer.png">
+      </div>
+    </div>
+    <br>
+    <div class="row mt-5">
+      <div class="col-12">
+        <p  id="jam" class="text-40 text-center text-white mb-0"></p>
+        <p id="tgl" class="text-18 text-center text-white mb-0"></p>
+      </div>
+      <br>
+      <div class="col-12 mt-3">
+        <p id="greetings" class="text-20 text-center text-white mb-0"></p>
+        <p id="nama" class="text-24 text-center font-weight-bold text-white mb-0"></p>
+        <p class="text-20 text-center text-white mb-0">Sukses Selalu Untuk Karir Anda</p>
+      </div>
+    </div>
+    <br><br><br><br>
+    <div class="jarak-atas">
+    <div class="row mt-5 mb-2 form-group">
+        <div class="col-12 text-center">
+            <a href="dashboard.html">
+                <button class="btn btn-warning welcome-next">
+                    <label class="font-weight-bold text-16 mb-0 text-white">NEXT</label>
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="row form-group mb-4">
+        <div class="col-12 text-center">
+            <a id="keluar">
+                <button class="btn btn-outline-warning welcome-next">
+                    <label class="font-weight-bold text-16 mb-0 text-orange">KELUAR</label>
+                </button>
+            </a>
+        </div>
+    </div>
+    </div>
+    <p class="font-weight-light text-14 text-center text-white">Teras Kampus © 2019<br> V.1.0</p>
+  </div>
+
+  <script>
+    var month = new Array();
+    month[0] = "Januar";
+    month[1] = "Februari";
+    month[2] = "Maret";
+    month[3] = "April";
+    month[4] = "Mei";
+    month[5] = "Juni";
+    month[6] = "Juli";
+    month[7] = "Agustus";
+    month[8] = "September";
+    month[9] = "Oktober";
+    month[10] = "November";
+    month[11] = "Desember";
+    var time = new Date();
+    //var time = {hour:'2-digit', minute:'2-digit', second:'2-digit'};
+    $(document).ready(function(){
+      setInterval(function(){
+
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+
+        // Add leading zeros
+        minutes = (minutes < 10 ? "0" : "") + minutes;
+        seconds = (seconds < 10 ? "0" : "") + seconds;
+        hours = (hours < 10 ? "0" : "") + hours;
+
+        // Compose the string for display
+        var currentTimeString = hours + ":" + minutes + ":" + seconds;
+        $("#jam").html(currentTimeString);
+        if(hours > 14){
+          $('#greetings').text('Selamat Sore Professional Muda');
+        }else if(hours > 18){
+          $('#greetings').text('Selamat Malam Professional Muda');
+        }else if(hours > 24){
+          $('#greetings').text('Selamat Pagi Professional Muda');
+        }else if(hours > 10){
+          $('#greetings').text('Selamat Siang Professional Muda');          
+        }
+      },1000);
+      $('#tgl').text(time.getDate()+" "+month[time.getMonth()]+" "+time.getFullYear());
+      $('#nama').text(localStorage.getItem('nama'));
+    });
+    $('#keluar').on('click', function(){
+      localStorage.clear();
+      window.location = "sign_in.html";
+    });
+  </script>
+</body>
+</html>
